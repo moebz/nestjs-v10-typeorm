@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+  mypgdatabase:
+    image: postgres:13
+    env_file:
+      - .postgres.env
+    ports:
+      - 5051:5432
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+  mypgadmin:
+    image: dpage/pgadmin4
+    env_file:
+      - .pgadmin.env
+    ports:
+      - '5050:80'
